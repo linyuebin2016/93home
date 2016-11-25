@@ -1,0 +1,59 @@
+<div class="container-fluid" data-ng-controller="UserDetailInfoController">
+  
+  <p class="list-title">基本信息</p>
+  <div class="list-group list-group-m">
+    <a href="#" class="list-group-item"><span class="must">*</span>性别<div class="pull-right"><label class="radio-inline">{{userModel.sex ==0 ? '男':'女'}}</div></a>
+    <a href="#" class="list-group-item"><span class="must">*</span>民族<div class="pull-right">{{userModel.national}}</div></a>
+    <a href="#" class="list-group-item">出生地<div class="pull-right">{{userModel.birthPlace}}</div></a>
+    <a href="#" class="list-group-item">籍贯<div class="pull-right">{{type3000 | CodeNameFilter:userModel.nativePlace}}</div></a>
+  </div>
+  <p class="list-title">社员信息</p>
+  <div class="list-group list-group-m">
+    <a href="javascript:;" class="list-group-item">入社时间<div class="pull-right">{{userModel.signDate | date : 'yyyy-MM-dd'}}</div></a>
+    <a href="#" class="list-group-item">所属组织<div class="pull-right">{{userModel.userOrg[0].orgName}}</div></a>
+    <a href="#" class="list-group-item">职务<div class="pull-right">{{userModel.userOrg[0].postName}}</div></a>
+    <a href="#" class="list-group-item">社内界别<div class="pull-right">{{type1013|CodeNameFilter:userModel.partyConstituency}}</div></a>
+    <a href="#" class="list-group-item">统战部界别<div class="pull-right">{{type1018|CodeNameFilter:userModel.unitedFrontDeptCircles}}</div></a>
+    <a href="#" class="list-group-item">社员层次<div class="pull-right">{{type1020|CodeNameFilter:userModel.partyStaffLevel}}</div></a>
+    <a href="#" class="list-group-item">党派交叉<div class="pull-right">{{userModel.partisanCross}}</div></a>
+    <a href="#" class="list-group-item">中共党员<div class="pull-right">{{userModel.partisanCross?'是':'否'}}</div></a>
+  </div>
+  <p class="list-title">教育信息</p>
+  <div class="list-group list-group-m">
+    <a href="#" class="list-group-item">学术职务<div class="pull-right">{{type1030|CodeNameFilter:userModel.learningPost}}</div></a>
+    <a href="#" class="list-group-item">学位<div class="pull-right">{{type1008|CodeNameFilter:userModel.degree}}</div></a>
+  </div>
+  <p class="list-title">工作信息</p>
+  <div class="list-group list-group-m">
+    <a href="javascript:;" class="list-group-item"><span class="must">*</span>参加工作时间<div class="pull-right">{{userModel.workDate|date : 'yyyy-MM-dd'}}</div></a>
+    <a href="#" class="list-group-item">部门<div class="pull-right">{{userModel.dept}}</div></a>
+    <a href="#" class="list-group-item"><span class="must">*</span>行政级别<div class="pull-right">{{type1000|CodeNameFilter:userModel.executiveLevel}}</div></a>
+    <a href="#" class="list-group-item"><span class="must">*</span>职称类别<div class="pull-right">{{type1019|CodeNameFilter:userModel.technicalCategory}}</div></a>
+    <a href="#" class="list-group-item">职称级别<div class="pull-right">{{type1017|CodeNameFilter:userModel.technicalName}}</div></a>
+    <a href="#" class="list-group-item">退休情况<div class="pull-right">{{userModel.retirement=="Y"?'是':'否'}}</div></a>
+  </div>
+  <p class="list-title">通讯信息</p>
+  <div class="list-group list-group-m" >
+    <div data-ng-repeat="m in userModel.userAddressInfos">
+      <a href="javascript:;" class="list-group-item">{{m.addrName}}<div class="pull-right">{{m.addrPostion}}</div></a>
+      <a href="javascript:;" class="list-group-item">邮编<div class="pull-right">{{m.addrPostNo}}</div></a>
+    </div>
+    <a href="javascript:;" class="list-group-item" data-ng-repeat="m in userModel.userContactInfos">{{m.contactName}}<div class="pull-right">{{m.contactInfo}}</div></a>
+    <a href="javascript:;" class="list-group-item">Email<div class="pull-right">{{userModel.email}}</div></a>
+  </div>
+  <p class="list-title">介绍人信息</p>
+  <div class="list-group list-group-m">
+    <div data-ng-repeat="r in userModel.userReferrerInfos">
+      <a href="javascript:;" class="list-group-item">介绍人{{$index + 1}}<div class="pull-right">{{r.referrerName}}</div></a>
+      <a href="javascript:;" class="list-group-item">介绍人工作单位及职务{{$index + 1}}<div class="pull-right">{{r.referrerInfo}}</div></a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
